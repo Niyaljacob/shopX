@@ -14,36 +14,56 @@ class ProductTile extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Stack(
-              children: [
-                Container(
-                  height: 180,
-                  width: double.infinity,
-                  clipBehavior: Clip.antiAlias,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: Image.network(
-                    product.imageLink,
-                    fit: BoxFit.cover,
-                  ),
+            Container(
+              height: 150,
+              width: double.infinity,
+              clipBehavior: Clip.antiAlias,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(4),
+              ),
+              child: Image.network(
+                product.imageLink,
+                fit: BoxFit.cover,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              product.name,
+              maxLines: 2,
+              style: const TextStyle(
+                fontFamily: 'avenir',
+                fontWeight: FontWeight.w600,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+            const SizedBox(height: 8),
+            if (product.rating != null)
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.green,
+                  borderRadius: BorderRadius.circular(12),
                 ),
-                SizedBox(height: 8,),
-                Text(product.name,
-                maxLines: 2,
-                style: const TextStyle(fontFamily: 'avenir',fontWeight: FontWeight.w600, overflow: TextOverflow.ellipsis),
+                padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      product.rating.toString(),
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                    const Icon(
+                      Icons.star,
+                      size: 16,
+                      color: Colors.white,
+                    ),
+                  ],
                 ),
-               SizedBox(height: 8,),
-                if(product.rating !=null)
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.green,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  
-                )
-              ],
-            )
+              ),
+            const SizedBox(height: 8),
+            Text(
+              '\$${product.price}',
+              style: const TextStyle(fontSize: 32, fontFamily: 'avenir'),
+            ),
           ],
         ),
       ),

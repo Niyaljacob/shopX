@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:shopx_getx/controller/product_controller.dart';
-import 'package:shopx_getx/models/product.dart';
-import 'package:shopx_getx/models/product.dart';
+import 'package:shopx_getx/view/product_tile.dart';
 
 class HomePage extends StatelessWidget {
   final ProductController productcontroller = Get.put(ProductController());
@@ -51,26 +50,26 @@ class HomePage extends StatelessWidget {
           ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: StaggeredGrid.count(
-                crossAxisCount: 4,
-                mainAxisSpacing: 8.0,
-                crossAxisSpacing: 8.0,
-                children: List.generate(productcontroller.productList.length, (index) {
-                  
-                }).map((item) {
-                  return Obx(() =>StaggeredGridTile.count(
-                      crossAxisCellCount: 2,
-                      mainAxisCellCount: 1.8,
-                      child: Container(
-                    color: Colors.blue[100],
-                    
+        padding: const EdgeInsets.all(8.0),
+        child:ListView(children: [
+            Obx(() => StaggeredGrid.count(
+              crossAxisCount: 4,
+              mainAxisSpacing: 8.0,
+              crossAxisSpacing: 8.0,
+             
+              children: List.generate(productcontroller.productList.length, (index) {
+                return StaggeredGridTile.count(
+                  crossAxisCellCount: 2,
+                  mainAxisCellCount: 3.5,
+                  child: Container(
+                    // color: Colors.blue[100],
+                    child: ProductTile(product: productcontroller.productList[index]),
                   ),
-                    ),
-                  );
-                }).toList(),
-              ),
-            ),
+                );
+              }),
+            )),
+        ],) 
+      ),
           ),
         ],
       ),
