@@ -61,10 +61,7 @@ class HomePage extends StatelessWidget {
                 return StaggeredGridTile.count(
                   crossAxisCellCount: 2,
                   mainAxisCellCount: 3.5,
-                  child: Container(
-                    // color: Colors.blue[100],
-                    child: ProductTile(product: productcontroller.productList[index]),
-                  ),
+                  child: ProductTile(product: productcontroller.productList[index]),
                 );
               }),
             )),
