@@ -39,11 +39,15 @@ class HomePage extends StatelessWidget {
                 ),
                 IconButton(
                   icon: const Icon(Icons.view_list_rounded),
-                  onPressed: () {},
+                  onPressed: () {
+                    print("the icon pressed");
+                  },
                 ),
                 IconButton(
                   icon: const Icon(Icons.grid_view),
-                  onPressed: () {},
+                  onPressed: () {
+                    print("the icon pressed");
+                  },
                 ),
               ],
             ),
